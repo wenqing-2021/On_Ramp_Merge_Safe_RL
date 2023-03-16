@@ -3,6 +3,15 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# DO NOT PUSH
+data/
+DATA FOR TASE/
+draw_picture/
+eval_result/
+pictures/
+trained_models/
+trained_models (copy)/
+wandb/
 # C extensions
 *.so
 
@@ -102,13 +111,13 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# .env
+# .venv
+# env/
+# venv/
+# ENV/
+# env.bak/
+# venv.bak/
 
 # Spyder project settings
 .spyderproject
