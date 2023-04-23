@@ -25,7 +25,7 @@ def plot_data(data_set, y_value=None, sub_axis=False, save_name=None):
         labels = None
         # labels = ['SACD-$\lambda$', 'SACD-$\lambda$-M', 'SACD-$\lambda$-TM']
         # labels = ['Dueling DQN','SACD','SACD-$\lambda$']
-        labels = ['$\sigma=0$', '$\sigma=5$', '$\sigma=10$']
+        labels = ['$\sigma=1$', '$\sigma=5$', '$\sigma=10$']
         # labels = ['$\eta=0.1$', '$\eta=0.05$', '$\eta=0.01$']
         label_size = 50
         ticks_size = 48
