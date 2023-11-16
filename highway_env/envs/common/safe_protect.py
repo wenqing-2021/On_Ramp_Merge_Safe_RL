@@ -1,6 +1,7 @@
 # Safe_protect_module
 # Author: Yuansj
 # Time : 2022/03/08
+import math
 
 class safe_check:
     '''
@@ -8,7 +9,8 @@ class safe_check:
     A rule based module to ensure safety, if ego want to change lane, 
     but there have been a vehicle in the target lane. Then reject the action, choose slower to make sure safety.
     '''
-    def __init__(self, road, ego, config) -> None:
+    def __init__(self, road, ego, config, check_type) -> None:
+        self.repalce_type = check_type
         self.ego = ego
         self.road = road
         self.all_action = {
@@ -27,8 +29,16 @@ class safe_check:
         choose_action = self.all_action[action]
         collision_other, collision_object, wrong_action = False, False, False
         future_state = self.ego.safe_act(choose_action)
-        ego_future_positionx = future_state[self.predicted_nth*4,0]
-        ego_future_positiony = future_state[self.predicted_nth*4+1,0]
+        if self.repalce_type == "mpc":
+            ego_future_positionx = future_state[self.predicted_nth*4,0]
+            ego_future_positiony = future_state[self.predicted_nth*4+1,0]
+        elif self.repalce_type == "simple":
+             current_ego_head = self.ego.heading
+             current_speed = self.ego.speed
+             current_x = self.ego.position[0]
+             current_y = self.ego.position[1]
+             ego_future_positionx = current_x + current_speed * self.predicted_nth * math.cos(current_ego_head)
+             ego_future_positiony = current_y + current_speed * self.predicted_nth * math.sin(current_ego_head)
 
         if self.ego.position[0] < self.road.road_ends and self.ego.position[0] > 630:
             for i in range(len(self.road.vehicles) - 1):

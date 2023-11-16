@@ -65,6 +65,9 @@ def plot_data(data_set, y_value=None, sub_axis=False, save_name=None):
         elif save_name == 'sacd_with_ppo_b':
             labels = ['SACD','SACD-$\lambda$','SACD-$\lambda$-M','SACD-$\lambda$-TM']
             hue_order = ['SACD_original','SAC_baseline', 'SAC_mpc', 'SAC_nsteps_mpc']
+        elif save_name == 'sacd_mpc_ablation_study':
+            labels = ['SACD-$\lambda$-Simple','SACD-$\lambda$-TM']
+            hue_order = ['sac_simple_nstep_0.01','SAC_nsteps_mpc']
         
         fig.add_subplot(1, len(y_value), index+1)
         ax = sns.lineplot(data=all_data, x='Epoch', y=i, hue='Exp_name', hue_order=hue_order,
@@ -161,13 +164,13 @@ def get_data(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--file_path", type=str, default='data/')
-    parser.add_argument("--algo", type=list, default=['SAC_eta'])
+    parser.add_argument("--algo", type=list, default=['SAC_eta/SAC_nsteps_mpc','SAC_simple_check'])
     # parser.add_argument("--y_value", type=list, default=['Crash_ratio',
     #                                                      'AverageEpCost',
     #                                                      'AverageEpRet'])
-    parser.add_argument("--y_value", type=list, default=['AverageEpCost','AverageEpRet'])
+    parser.add_argument("--y_value", type=list, default=['Crash_ratio','AverageEpRet'])
     parser.add_argument('--add_subaxis', type=bool, default=False)
-    parser.add_argument("--save_name", type=str, default='sacd_eta')
+    parser.add_argument("--save_name", type=str, default='sacd_mpc_ablation_study')
     args = parser.parse_args()
 
     data_set = get_data(args)

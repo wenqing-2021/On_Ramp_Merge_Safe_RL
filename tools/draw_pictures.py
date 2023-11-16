@@ -24,14 +24,14 @@ def save_picture(picture, id, agent_name):
     plt.savefig(save_path, dpi=800, format='svg')
 
 def initial_env():
-    merge_env = gym.make('merge_eval_high_density-v0')
+    merge_env = gym.make('merge_game_env-v0')
     # merge_env = merge_env.unwrapped
     merge_env.configure({
         "simulation_frequency": 10,
-        "policy_frequency": 10,
-        "screen_width": 3200,
-        "screen_height": 800,
-        "scaling": 12,
+        "policy_frequency": 2,
+        "screen_width": 720,
+        "screen_height": 540,
+        "scaling": 6,
         "manual_control":False,
         "mpc_control": True,
         "show_mpc_trajectory": True,
@@ -64,15 +64,15 @@ def plot(i, data_x, data_y, label_name):
 if __name__ == "__main__":
     import argparse
     perser = argparse.ArgumentParser()
-    perser.add_argument('--total_episodes', type=int, default=1)
+    perser.add_argument('--total_episodes', type=int, default=10)
     perser.add_argument('--seed', type=int, default=123)
     perser.add_argument('--render', type=bool, default=True)
     perser.add_argument('--safe_pic', type=bool, default=False)
     perser.add_argument('--re_action', type=bool, default=True)
-    perser.add_argument('--plot_state', type=bool, default=True)
+    perser.add_argument('--plot_state', type=bool, default=False)
     perser.add_argument('--save_freq', type=int, default=1)
     args = perser.parse_args()
-    agent_name = ['/SAC_SACD-TDn-MPC-5th_2']
+    agent_name = ['/SAC_simple_check_sac_simple_nstep_0.01_5']
 
     all_speed = []
     all_acc = []
@@ -111,7 +111,7 @@ if __name__ == "__main__":
                 a, _, _, _ = agent.step(torch.from_numpy(obs).float())
 
                 if re_action:
-                    a = env.check_action(int(a))
+                    a = env.check_action(int(a), 'simple')
                 time_2 = time.time()
                 print('------')
                 print('delta time', time_2 - time_1)

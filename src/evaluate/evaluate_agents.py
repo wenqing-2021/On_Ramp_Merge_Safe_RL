@@ -52,10 +52,10 @@ def merge_eval(env_fn,
     torch.manual_seed(seed)
     np.random.seed(seed)
     random.seed(seed)
-    merge_env = merge_env.unwrapped
-    merge_env.action_space.seed(seed)
     # create merge env
     merge_env = env_fn()
+    merge_env = merge_env.unwrapped
+    merge_env.action_space.seed(seed)
     merge_env.configure({
         "simulation_frequency": 10,
         "policy_frequency": 2,
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=5)
     parser.add_argument('--steps', type=int, default=4000)
     parser.add_argument('--exp_name', type=str, default='original_in_low')
-    parser.add_argument('--render', type=bool, default=False)
+    parser.add_argument('--render', type=bool, default=True)
     parser.add_argument('--safe_protect', type=bool, default=False)
     parser.add_argument('--print_freq', type=int, default=100)
     # parser.add_argument('--agents', nargs='+', default=['sac_baseline',
@@ -188,7 +188,7 @@ if __name__ == "__main__":
     #                                                     'Original_SACD_original_1',
     #                                                     'sac_mpc',
     #                                                     'sac_mpc_nstep'])
-    parser.add_argument('--agents', nargs='+', default=['sac_baseline',
+    parser.add_argument('--agents', nargs='+', default=['sac_mpc_nstep',
                                                         # 'Original_SACD_original_100',
                                                         ])
     # parser.add_argument('--agents', nargs='+', default=['PPO_Baseline_PPO_5'])
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     for i, agent_name in enumerate(args.agents):
 
         logger_kwargs = setup_logger_kwargs(args.exp_name + '_' + agent_name, 
-                                        data_dir=os.path.join('eval_result',args.data_file, 'low'))
+                                        data_dir=os.path.join('eval_result',args.data_file, 'low_1'))
 
         # Set up logger and save configuration
         logger = EpochLogger(**logger_kwargs)

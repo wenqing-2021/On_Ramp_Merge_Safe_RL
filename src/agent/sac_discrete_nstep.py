@@ -545,7 +545,8 @@ def train(config, logger_kwargs=dict()):
 
             if re_action:
                 action_origin = action
-                action = env.check_action(int(action))
+                # "simple" or "mpc"
+                action = env.check_action(int(action), "simple")
 
             next_state, reward, done, info = env.step(int(action))
             cost = info['cost']
@@ -631,13 +632,13 @@ def train(config, logger_kwargs=dict()):
 if __name__ == "__main__":
     # config
     parser = argparse.ArgumentParser(description='RL')
-    parser.add_argument("--proj_name", type=str, default="SAC_eta")
-    parser.add_argument("--run_name", type=str, default="sac_mpc_nstep_0.05", help="Run name, default: baseline")
+    parser.add_argument("--proj_name", type=str, default="SAC_simple_check")
+    parser.add_argument("--run_name", type=str, default="sac_simple_nstep_0.01", help="Run name, default: baseline")
     parser.add_argument("--env", type=str, default="merge_game_env-v0",
                         help="Gym environment name, default: CartPole-v0")
     parser.add_argument("--buffer_size", type=int, default=1000_000,
                         help="Maximal training dataset size, default: 1000_000")
-    parser.add_argument("--seed", type=int, default=5, help="Seed, default: 1")
+    parser.add_argument("--seed", type=int, default=2, help="Seed, default: 1")
     parser.add_argument("--save_every", type=int, default=20, help="Saves the network every x epochs, default: 25")
     parser.add_argument("--batch_size", type=int, default=256, help="Batch size, default: 256")
     parser.add_argument("--safe_check", type=bool, default=True)
@@ -647,10 +648,10 @@ if __name__ == "__main__":
     parser.add_argument('--update_freq', type=int, default=100)
     parser.add_argument('--update_target_freq', type=int, default=100)
     parser.add_argument('--max_ep_len', type=int, default=1000)
-    parser.add_argument('--cpu', type=int, default=2)
+    parser.add_argument('--cpu', type=int, default=4)
     parser.add_argument('--per', type=bool, default=False)
     parser.add_argument('--n_step', type=int, default=3, help='1 or 3')
-    parser.add_argument('--cost_limit', type=float, default=0.05)
+    parser.add_argument('--cost_limit', type=float, default=0.01)
     args = parser.parse_args()
 
     mpi_fork(args.cpu)

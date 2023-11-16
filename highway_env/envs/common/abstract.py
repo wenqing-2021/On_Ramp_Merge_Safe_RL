@@ -210,12 +210,14 @@ class AbstractEnv(gym.Env):
         """
         raise NotImplementedError()
     
-    def check_action(self, action: Action) -> int:
+    def check_action(self,
+                     action: Action,
+                     check_type:str = None) -> int:
 
         if self.config['safe_check']:
             road = copy.deepcopy(self.road)
             vehicle = copy.deepcopy(self.vehicle)
-            check_action = safe_check(road, vehicle, self.config)
+            check_action = safe_check(road, vehicle, self.config, check_type)
             unsafe_action = check_action.collision_check(action)
             correct_action=check_action.correct_action(unsafe_action,action)
 
