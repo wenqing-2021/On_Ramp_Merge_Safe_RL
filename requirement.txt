@@ -9,3 +9,5 @@ torch==1.10.0
 joblib==0.14.1
 tqdm==4.62.3
 pygame==2.1.0
+protobuf==3.19.4
+numpy==1.21.0

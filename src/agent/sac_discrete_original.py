@@ -13,6 +13,8 @@ import argparse
 import time
 import os
 import gym
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import highway_env
 from collections import deque, namedtuple
 from utils.logx import EpochLogger
@@ -575,8 +577,8 @@ def train(config, logger_kwargs=dict()):
 if __name__ == "__main__":
     # config
     parser = argparse.ArgumentParser(description='RL')
-    parser.add_argument("--proj_name", type=str, default="Original")
-    parser.add_argument("--run_name", type=str, default="SACD_original", help="Run name, default: baseline")
+    parser.add_argument("--proj_name", type=str, default="Baseline")
+    parser.add_argument("--run_name", type=str, default="SACD", help="Run name, default: baseline")
     parser.add_argument("--env", type=str, default="merge_game_env-v0",
                         help="Gym environment name, default: CartPole-v0")
     parser.add_argument("--buffer_size", type=int, default=100_000,

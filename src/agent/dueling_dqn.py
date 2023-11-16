@@ -3,12 +3,15 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 import numpy as np
+import random
+import gym
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+import highway_env
 from utils.logx import EpochLogger
 from utils.mpi_pytorch import setup_pytorch_for_mpi, sync_params, mpi_avg_grads
 from utils.mpi_tools import mpi_fork, mpi_avg, proc_id, mpi_statistics_scalar, num_procs, mpi_sum
-import random
-import gym
-import highway_env
 import wandb
 import argparse
 import time
@@ -54,7 +57,7 @@ class ReplayBuffer:
     def ready(self):
         return self.mem_cnt > self.batch_size
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = "cpu"
 
 class DuelingDeepQNetwork(nn.Module):
     def __init__(self, alpha, state_dim, action_dim, fc1_dim, fc2_dim):
@@ -81,6 +84,7 @@ class DuelingDQN(nn.Module):
     def __init__(self, alpha, state_dim, action_dim, fc1_dim, fc2_dim,
                  gamma=0.99, tau=0.005, epsilon=1.0, eps_end=0.01, eps_dec=5e-4,
                  max_size=1000000, batch_size=256):
+        super().__init__()
         self.gamma = gamma
         self.tau = tau
         self.batch_size = batch_size
@@ -282,7 +286,7 @@ def train(config, logger_kwargs=dict()):
 if __name__ == "__main__":
     # config
     parser = argparse.ArgumentParser(description='RL')
-    parser.add_argument("--proj_name", type=str, default="Original")
+    parser.add_argument("--proj_name", type=str, default="Baseline")
     parser.add_argument("--run_name", type=str, default="DuelingDQN", help="Run name, default: baseline")
     parser.add_argument("--env", type=str, default="merge_game_env-v0",
                         help="Gym environment name, default: CartPole-v0")

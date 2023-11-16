@@ -13,6 +13,8 @@ import argparse
 import time
 import os
 import gym
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import highway_env
 from collections import deque, namedtuple
 from utils.logx import EpochLogger
@@ -632,8 +634,8 @@ def train(config, logger_kwargs=dict()):
 if __name__ == "__main__":
     # config
     parser = argparse.ArgumentParser(description='RL')
-    parser.add_argument("--proj_name", type=str, default="SAC_simple_check")
-    parser.add_argument("--run_name", type=str, default="sac_simple_nstep_0.01", help="Run name, default: baseline")
+    parser.add_argument("--proj_name", type=str, default="Lagrangian")
+    parser.add_argument("--run_name", type=str, default="SACD", help="Run name, default: baseline")
     parser.add_argument("--env", type=str, default="merge_game_env-v0",
                         help="Gym environment name, default: CartPole-v0")
     parser.add_argument("--buffer_size", type=int, default=1000_000,
@@ -641,7 +643,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=2, help="Seed, default: 1")
     parser.add_argument("--save_every", type=int, default=20, help="Saves the network every x epochs, default: 25")
     parser.add_argument("--batch_size", type=int, default=256, help="Batch size, default: 256")
-    parser.add_argument("--safe_check", type=bool, default=True)
+    parser.add_argument("--safe_check", action='store_true', help='Enable the safe check')
     parser.add_argument('--num_steps', type=int, default=5e5)
     parser.add_argument('--sample_steps', type=int, default=20000)
     parser.add_argument('--steps_per_epoch', type=int, default=4000)
@@ -653,6 +655,9 @@ if __name__ == "__main__":
     parser.add_argument('--n_step', type=int, default=3, help='1 or 3')
     parser.add_argument('--cost_limit', type=float, default=0.01)
     args = parser.parse_args()
+    
+    if args.safe_check:
+        args.proj_name = "Lagrangian_MPC"
 
     mpi_fork(args.cpu)
 

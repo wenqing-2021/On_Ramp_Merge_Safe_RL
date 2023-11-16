@@ -2,6 +2,9 @@
 import numpy as np
 import torch
 from torch.optim import Adam
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import highway_env
 import gym
 import time
@@ -521,8 +524,8 @@ if __name__ == '__main__':
     parser.add_argument('--steps_per_epoch', type=int, default=4000)
     parser.add_argument('--cost_limit', type=float, default=0.01)
     parser.add_argument('--safe_check', type=bool, default=False)
-    parser.add_argument('--run_name', type=str, default='original_ppo')
-    parser.add_argument('--proj_name', type=str, default='PPO')
+    parser.add_argument('--run_name', type=str, default='PPO')
+    parser.add_argument('--proj_name', type=str, default='Lagrangian')
     args = parser.parse_args()
 
     mpi_fork(args.cpu)  # run parallel code with mpi
