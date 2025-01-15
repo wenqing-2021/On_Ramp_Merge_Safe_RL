@@ -20,6 +20,8 @@ then you need to install the requirements:
 ```bash
 git clone https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL.git
 cd On_Ramp_Merge_Safe_RL
+pip install setuptools==65.5.0
+pip install --user wheel==0.38.0
 pip install -r requirement.txt
 ```
 Note: we use wandb to log the training process, so you need to create an account on [wandb](https://wandb.ai/) and login with your account. Here is the tutorial for [quick_start](https://docs.wandb.ai/quickstart).
