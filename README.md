@@ -1,5 +1,5 @@
 # Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic
-This is the official implementation of the paper: [Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic]. The code is based on [highway-env](http://highway-env.farama.org/).
+This is the official implementation of the paper: [Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic](https://arxiv.org/abs/2503.02624). The code is based on [highway-env](http://highway-env.farama.org/).
 
 ## 1. Setup Environment
 We use [conda](https://docs.conda.io/en/latest/) to manage our environment. To create the environment, run
@@ -94,3 +94,18 @@ The plot tools have been implemented in the folder tools/. We suggest the audien
 ![train_results_a](./picture/train_results_a.png)
 
 ![train_results_b](./picture/train_results_b.png)
+
+
+## 5. Citation
+if you think this work is interesting or helpful for your research, you can cite it: 
+```
+@misc{li2025humanalignedsafereinforcementlearning,
+      title={Human-aligned Safe Reinforcement Learning for Highway On-Ramp Merging in Dense Traffic}, 
+      author={Yang Li and Shijie Yuan and Yuan Chang and Xiaolong Chen and Qisong Yang and Zhiyuan Yang and Hongmao Qin},
+      year={2025},
+      eprint={2503.02624},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2503.02624}, 
+}
+```
