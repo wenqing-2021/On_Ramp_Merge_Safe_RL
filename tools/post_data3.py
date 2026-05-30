@@ -183,7 +183,7 @@ if __name__ == "__main__":
     plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=0.53)
     save_dir = './pictures/'
     if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
+        os.makedirs(save_dir, exist_ok=True)
     save_name = 'sacd_tm_sigma'
     plt.savefig(os.path.join(save_dir, save_name), dpi=600, format='pdf', bbox_inches='tight')
 

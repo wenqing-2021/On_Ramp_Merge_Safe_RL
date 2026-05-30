@@ -80,7 +80,7 @@ def merge_eval(env_fn,
     # save data to txt file
     save_dir = os.path.join('eval_result', data_file)
     if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
+        os.makedirs(save_dir, exist_ok=True)
     file_dir = os.path.join(save_dir, exp_name + '_' + choose_agent)
     head_list = ['Agent', 'Episode', 'Crashed', 'Success', 'Costs', 'Length\n']
     head_str = '\t'.join(head_list)

@@ -111,6 +111,6 @@ if __name__ == "__main__":
     
     save_dir = './pictures/'
     if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
+        os.makedirs(save_dir, exist_ok=True)
     plt.savefig(os.path.join(save_dir, args.save_name), dpi=600, format='pdf', bbox_inches='tight')
     plt.show()

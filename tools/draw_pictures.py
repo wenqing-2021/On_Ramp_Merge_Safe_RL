@@ -14,7 +14,7 @@ font = {'family' : 'Times New Roman',
 def save_picture(picture, id, agent_name):
     save_dir = './draw_picture/' + agent_name
     if not os.path.exists(save_dir):
-        os.makedirs(save_dir)
+        os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, id)
     fig = plt.figure()
     fig.set_figheight(4)
