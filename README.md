@@ -1,5 +1,5 @@
-# Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic
-This is the official implementation of the paper: [Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212417). The code is based on [highway-env](http://highway-env.farama.org/).
+# Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic
+This is the official implementation of the paper: [Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212417). And this repo also contains the core design about [Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging](https://www.mdpi.com/2075-1702/14/6/605).
 
 ## 1. Setup Environment
 We use [conda](https://docs.conda.io/en/latest/) to manage our environment. To create the environment, run
@@ -109,3 +109,23 @@ if you think this work is interesting or helpful for your research, you can cite
       url={https://arxiv.org/abs/2503.02624}, 
 }
 ```
+or the published paper:
+```
+@Article{machines14060605,
+AUTHOR = {Teng, Jingjia and Huang, Wenjie and Yuan, Shijie and Hu, Manjiang and Qin, Hongmao and Li, Yang and Bian, Yougang and Li, Bai},
+TITLE = {Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging},
+JOURNAL = {Machines},
+VOLUME = {14},
+YEAR = {2026},
+NUMBER = {6},
+ARTICLE-NUMBER = {605},
+URL = {https://www.mdpi.com/2075-1702/14/6/605},
+ISSN = {2075-1702},
+DOI = {10.3390/machines14060605}
+}
+```
+
+## 6. Acknowledgement
+- [highway-env](http://highway-env.farama.org/).
+- [spinningup](https://github.com/openai/spinningup)
+- [safety-starter-agents](https://github.com/openai/safety-starter-agents)
