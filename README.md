@@ -1,5 +1,5 @@
-# Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic
-This is the official implementation of the paper: [Human-aligned Safe Reinforcement Learning for Highway On-ramp Merging in Dense Traffic](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5212417). The code is based on [highway-env](http://highway-env.farama.org/).
+# Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging
+This is the official implementation of the paper: [Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging](https://www.mdpi.com/2075-1702/14/6/605). The code is based on [highway-env](http://highway-env.farama.org/).
 
 ## 1. Setup Environment
 We use [conda](https://docs.conda.io/en/latest/) to manage our environment. To create the environment, run
@@ -99,13 +99,16 @@ The plot tools have been implemented in the folder tools/. We suggest the audien
 ## 5. Citation
 if you think this work is interesting or helpful for your research, you can cite it: 
 ```
-@misc{li2025humanalignedsafereinforcementlearning,
-      title={Human-aligned Safe Reinforcement Learning for Highway On-Ramp Merging in Dense Traffic}, 
-      author={Yang Li and Shijie Yuan and Yuan Chang and Xiaolong Chen and Qisong Yang and Zhiyuan Yang and Hongmao Qin},
-      year={2025},
-      eprint={2503.02624},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2503.02624}, 
+@Article{machines14060605,
+AUTHOR = {Teng, Jingjia and Huang, Wenjie and Yuan, Shijie and Hu, Manjiang and Qin, Hongmao and Li, Yang and Bian, Yougang and Li, Bai},
+TITLE = {Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging},
+JOURNAL = {Machines},
+VOLUME = {14},
+YEAR = {2026},
+NUMBER = {6},
+ARTICLE-NUMBER = {605},
+URL = {https://www.mdpi.com/2075-1702/14/6/605},
+ISSN = {2075-1702},
+DOI = {10.3390/machines14060605}
 }
 ```
